@@ -1,6 +1,5 @@
 let cards = document.querySelectorAll('.card_inner')
 let firstClick = false
-let counter = 0 
 let cardPair = []
 
 cards.forEach((card)=>{
@@ -17,7 +16,6 @@ for(let i=0; i<cards.length; i++){
         if(cards[i].state == 'unclicked'){
             cards[i].style.transform = 'rotateY(180deg)'
             cards[i].state = 'clicked'
-            counter++
             cardPair.push(cards[i])
             check()
         }
@@ -25,14 +23,13 @@ for(let i=0; i<cards.length; i++){
         else if(cards[i].state == 'clicked'){
             cards[i].style.transform = 'rotateY(0deg)'
             cards[i].state = 'unclicked'
-            counter--
             cardPair = []
         }
     })
 }
 
 function check(){
-    if(counter==2){
+    if(cardPair.length==2){
         if(cardPair[0].querySelector('img').src==cardPair[1].querySelector('img').src){
             matched()
         }
@@ -45,7 +42,6 @@ function check(){
 function matched(){
     cardPair[0].state='blocked'
     cardPair[1].state='blocked'
-    counter = 0
     cardPair = []
     let score = document.querySelector('#score').innerHTML
     score++
@@ -54,12 +50,13 @@ function matched(){
 
 function unmatched(x,y){
     setTimeout(()=>{
+        x.state = 'unclicked'
+        y.state = 'unclicked'
         x.style.transform = "rotateY(0deg)"
         y.style.transform = "rotateY(0deg)"
     },750)
-    cardPair[0].state = 'unclicked'
-    cardPair[1].state = 'unclicked'
-    counter = 0
+    cardPair[0].state = 'blocked'
+    cardPair[1].state = 'blocked'
     cardPair = []
 }
 
