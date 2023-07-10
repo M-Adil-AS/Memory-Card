@@ -1,5 +1,9 @@
 # Memory-Card
-A Browser Game I made as a personal project and also uploaded its tutorial on my youTube channel.
+A Browser 2D Game built using JavaScript.
+
+The game consists of a deck of cards with pairs of images or symbols hidden on the back. Players take turns flipping two cards at a time, trying to find matching pairs. If the cards don't match, they are flipped back over, and the player's task is to remember their positions for future turns.
+
+The objective of the Memory Card Game is to successfully match all the pairs in the shortest amount of time.
 
 Deployment Link: https://m-adil-as.github.io/Memory-Card/
 
